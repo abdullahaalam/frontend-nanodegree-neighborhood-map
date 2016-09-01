@@ -38,6 +38,22 @@ a:hover {
     color: yellow;
 }
 
+header {
+    background: #000;
+    color: #fff;
+}
+
+header h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30px;
+}
+
+header p {
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media screen and (orientation: portrait) {
 	#search {
 		left: 0;
@@ -50,6 +66,8 @@ a:hover {
 	#map {
 	   height: 70%;
 	   width:100%;
+       background-size: contain;
+       display: block;
 	}
 }
 
@@ -64,6 +82,8 @@ a:hover {
     #map {
         width: 100%;
         height: 100%;
+        text-align: center;
+        font-size: 15px;
     }
 }
 
@@ -75,5 +95,7 @@ a:hover {
     #map {
         width: 100%;
         height: 100%;
+        text-align: center;
+        font-size: 15px;
     }
 }

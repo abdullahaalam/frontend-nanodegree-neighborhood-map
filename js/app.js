@@ -1,8 +1,7 @@
-'use strict';
-
- // Google Maps API initMap function
+// Google Maps API initMap function
 function initMap() {
-
+    // Turn on Strict Mode
+    'use strict';
     /* View Model */
     var ViewModel = function() {
         var self = this;
@@ -36,19 +35,19 @@ function initMap() {
                 }
             };
 
-            var yelp_URL = 'https://api.yelp.com/v2/business/' + placeID;
+            var yelpUrl = 'https://api.yelp.com/v2/business/' + placeID;
 
             var parameters = {
                 oauth_consumer_key: authentication.consumerKey,
                 oauth_token: authentication.accessToken,
-                oauth_nonce: nonce_generate(),
+                oauth_nonce: nonceGenerate(),
                 oauth_timestamp: Math.floor(Date.now() / 1000),
                 oauth_signature_method: 'HMAC-SHA1',
                 oauth_version: '1.0',
                 callback: 'cb'
             };
 
-            var encodedSignature = oauthSignature.generate('GET', yelp_URL, parameters, authentication.consumerSecret, authentication.accessTokenSecret);
+            var encodedSignature = oauthSignature.generate('GET', yelpUrl, parameters, authentication.consumerSecret, authentication.accessTokenSecret);
             parameters.oauth_signature = encodedSignature;
 
             var selectedMarker = null;
@@ -63,11 +62,11 @@ function initMap() {
             });
 
             var errorTimeout = setTimeout(function() {
-                alert("Oops! Something went terribly wrong");
+                alert("Oops! Something went terribly wrong.");
             }, 8000);
 
             $.ajax({
-                url: yelp_URL,
+                url: yelpUrl,
                 data: parameters,
                 cache: true,
                 dataType: 'jsonp',
@@ -94,10 +93,6 @@ function initMap() {
                     });
 
                     self.InfoMarker.open(mapView.map, selectedMarker);
-                },
-
-                fail: function() {
-                    alert("An error has occured!");
                 }
             });
         };
@@ -210,8 +205,8 @@ function initMap() {
     ko.applyBindings(mapView);
 }
 
-function nonce_generate(length) {
-    var text = "";
+function nonceGenerate(length) {
+    var text = '';
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for (var i = 0; i < length; i++) {
         text += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
