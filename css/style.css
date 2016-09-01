@@ -66,8 +66,6 @@ header p {
 	#map {
 	   height: 70%;
 	   width:100%;
-       background-size: contain;
-       display: block;
 	}
 }
 
