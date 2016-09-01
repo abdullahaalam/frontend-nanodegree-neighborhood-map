@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Neighborhood Map - Coding Bootcamps</title>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Abdullah Alam">
+        <meta name="description" content="Neighborhood Map - Coding Bootcamps">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <!-- View Filter Locations -->
+        <div id="search">
+        <h1>Coding Bootcamps</h1>
+            <input class="form-control" placeholder="Search..." type="text" data-bind='value:filterLocations,valueUpdate: "afterkeydown"'>
+            <!-- View List View -->
+            <!-- Knockout JS bind data in this list from markers within ViewModel-->
+            <ul data-bind="foreach: markers">
+                <a data-bind="click: function(data, event) {
+                        $parent.updateList(yelp_id, data, event)
+                    }, attr: {href: yelp_id }">
+                    <li data-bind="text: title, visible:getVisible()">
+                    </li>
+                </a>
+            </ul>
+            <div>
+                <h1 data-bind="text: business()['name']"></h1>
+                <img data-bind="attr: {src : business()['image_url'], title: business()['name']}">
+                <div data-bind="foreach: location">
+                    <span data-bind="text: $data"></span>
+                    <br>
+                </div>
+                <div data-bind="text: business()['display_phone']"></div>
+                <br>
+                <img data-bind="attr: {src : business()['rating_img_url_large'], title: business()['rating']}">
+            </div>
+        </div>
+        <!-- View Map -->
+        <div id="map">
+        </div>
+        <!-- Special thanks to OAuth Creator Marco Bettiolo -->
+        <!-- OAuth git clone from https://github.com/bettiolo/oauth-signature-js -->
+        <script src="js/oauth-signature.js"></script>
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Knockout -->
+        <script src="js/knockout.js"></script>
+        <!-- JavaScript -->
+        <script src="js/app.js"></script>
+        <!-- My Google Map API Key: AIzaSyBzkIFHvJd9Ez1YcnbNjM7c1bIIqVuy2Mk -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzkIFHvJd9Ez1YcnbNjM7c1bIIqVuy2Mk&callback=initMap" async defer>
+        </script>
+    </body>
+</html>

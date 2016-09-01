@@ -1,0 +1,79 @@
+html,
+body {
+    font-family: 'Indie Flower', cursive;
+    width: 100%;
+    height: 100%;
+}
+
+#search {
+    position: absolute;
+    z-index: 5;
+    padding: 10px;
+    background-color: #444444;
+    color: #fff;
+    height: 100%;
+}
+
+ul {
+    margin: 10px 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+a, a:active, a:visited {
+    color: #fff;
+}
+
+a:hover {
+    color: yellow;
+}
+
+@media screen and (orientation: portrait) {
+	#search {
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	    height: 30%;
+	    overflow: scroll;
+	}
+
+	#map {
+	   height: 70%;
+	   width:100%;
+	}
+}
+
+@media (min-width: 750px) and (orientation: landscape) {
+    #search {
+        left: 0;
+        width: 20%;
+        height: 100%;
+        overflow: scroll;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 750px) and (orientation: landscape) {
+    #search {
+        display: none;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+}
